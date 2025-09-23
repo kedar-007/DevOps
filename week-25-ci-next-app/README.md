@@ -1,1 +1,1 @@
-Added the CI/CI confuguration
+Added the CI/CD confuguration
