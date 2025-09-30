@@ -12,4 +12,4 @@ ENV DATABASE_URL=postgresql://postgres:kedar@localhost:5432/postgres
 RUN npx prisma generate
 RUN npm run build
 EXPOSE 3000
-CMD sh -c "npx prisma migrate deploy && npm start"
+CMD ["npm","run","dev:docker"]
