@@ -13,10 +13,11 @@
 
 ## Docker installation
 - Install Docker
+- Start a new network `docker network create user_project`
 - Start postgres
-    - docker run -r POSTGRES_PASSWORD=kedar -d -p 5432:5432 postgress
-- Build the image - `docker vuild -t user_project.`
-- Start the image - `docker run -p 300:300 user_preoject`
+    - docker run --network user_project -e POSTGRES_PASSWORD=kedar -d -p 5432:5432 postgress
+- Build the image - `docker build  --network user_project -t user_project.`
+- Start the image - `docker run --network user_project -p 300:300 user_preoject`
 
 ## Docker compose installation steps
 - Install docker,docker-compose

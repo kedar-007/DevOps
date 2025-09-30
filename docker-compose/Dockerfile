@@ -2,13 +2,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY ./package.json ./package.json
-COPY ./package-lock.json ./packag-lock.json
+COPY package.json package-lock.json ./
+
+RUN npm i typescript
 
 RUN npm install
 COPY . .
-ENV DATABASE_URL = postgresql://postgres:kedar@localhost:5432/postgres
-RUN npx prisma migrate dev
+ENV DATABASE_URL=postgresql://postgres:kedar@localhost:5432/postgres
 RUN npx prisma generate
 RUN npm run build
-CMD [ "npm","start" ]
+EXPOSE 3000
+CMD sh -c "npx prisma migrate deploy && npm start"
