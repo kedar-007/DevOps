@@ -12,3 +12,12 @@
 - npn run start
 
 ## Docker installation
+- Install Docker
+- Start postgres
+    - docker run -r POSTGRES_PASSWORD=kedar -d -p 5432:5432 postgress
+- Build the image - `docker vuild -t user_project.`
+- Start the image - `docker run -p 300:300 user_preoject`
+
+## Docker compose installation steps
+- Install docker,docker-compose
+- Run `docker-compose up`
