@@ -1,0 +1,27 @@
+## Build the docker code
+## Push the docker image to docker hub
+## SSH inti VM and start the new image
+
+name: Deploy the http backend
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Docker login
+        uses: docker/login-actions@v2
+        with:
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: ${{secrets.DOCKERHUB_TOKEN}}
+      - name: Build and Push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./docker/Dockerfile.backend
+          push: true
+          tags: kedar/todo-app-backend: ${{github.sha}}
