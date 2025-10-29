@@ -1,0 +1,28 @@
+{
+  "name": "@repo/db",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Shared Prisma client and DB utilities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./client": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prisma:generate": "prisma generate",
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run prisma:generate && npm run build"
+  },
+  "dependencies": {
+    "@prisma/client": "6.18.0",
+    "dotenv": "^17.2.3",
+    "prisma": "^6.18.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "^5.6.0"
+  }
+}
