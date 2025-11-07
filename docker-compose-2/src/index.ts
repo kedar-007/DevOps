@@ -25,3 +25,7 @@ app.get("/",async (req,res)=>{
         message:"Post endpoint"
     })
 })
+
+app.listen(3000,()=>{
+    console.log("server is running on the 3000")
+})
